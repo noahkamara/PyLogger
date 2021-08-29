@@ -1,3 +1,4 @@
 /.idea
 /.venv
 /some.log
+__pycache__/
