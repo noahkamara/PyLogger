@@ -45,8 +45,15 @@ class Logger:
             msg = self.module + kwargs.get("msg", args[1])
             args = (self, msg, *args[1 if "msg" in kwargs.keys() else 2:])
             return func(*args, **kwargs)
-
         return wrap
+
+    def set_module(self, modulename: str) -> 'Logger':
+        self.__module = modulename
+        
+    def add_module(self, modulename: str) -> 'Logger':
+        logger = self
+        logger.set_module(modulename)
+        return logger
 
     @modulelogger
     def log(self, msg: str, level: Level = Level.NOTSET, show_stack: bool = False):
